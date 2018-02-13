@@ -50,6 +50,9 @@ public class Mysticis {
         @SubscribeEvent
         public static void onTick(TickEvent.ServerTickEvent event){
 
+            System.out.println(Minecraft.getMinecraft().player);
+            System.out.println(Minecraft.getMinecraft().player.getGameProfile());
+
             EntityPlayer p = CommonProxy.players.get(Minecraft.getMinecraft().player.getUUID(Minecraft.getMinecraft().player.getGameProfile()));
 
             ManaData mana = ManaData.from(p);
