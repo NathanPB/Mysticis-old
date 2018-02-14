@@ -1,5 +1,6 @@
 package cf.nathanpb.mysticis.item;
 
+import cf.nathanpb.mysticis.CreativeTab;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.Item;
 import net.minecraftforge.registries.IForgeRegistry;
@@ -10,7 +11,8 @@ import java.util.stream.Stream;
 
 public class ModItems {
 
-    public static final ItemBase MYSTICIS = new ItemBase("mysticis").setCreativeTab(CreativeTabs.MISC);
+    public static final CreativeTab CREATIVE_TAB = new CreativeTab();
+    public static final ItemBase MYSTICIS = new ItemMysticis().setCreativeTab(CreativeTabs.MISC);
 
     public static void register(IForgeRegistry<Item> registry){
         List<ItemBase> items = getItems();

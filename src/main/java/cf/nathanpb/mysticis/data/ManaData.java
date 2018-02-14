@@ -1,8 +1,9 @@
 package cf.nathanpb.mysticis.data;
 
-import net.minecraft.entity.EntityLiving;
+import cf.nathanpb.mysticis.events.ManaUpdateEvent;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.nbt.NBTTagCompound;
+import net.minecraftforge.common.MinecraftForge;
 
 import java.util.Optional;
 import java.util.stream.Stream;
@@ -33,7 +34,7 @@ public class ManaData extends NBTTagCompound{
     }
 
     public ManaData sum(ManaData data){
-        Stream.of(Type.values()).forEach(t -> set(data.get(t), t));
+        Stream.of(Type.values()).forEach(t -> set(data.get(t)+get(t), t));
         return this;
     }
 
@@ -48,15 +49,15 @@ public class ManaData extends NBTTagCompound{
     }
 
     public static ManaData from(EntityLivingBase living){
-        return new ManaData(Optional.of(living.getEntityData().getCompoundTag("mana")).orElse(new NBTTagCompound()));
+        return new ManaData(Optional.of(living.getEntityData().getCompoundTag("mysticis:mana")).orElse(new NBTTagCompound()));
     }
 
     public void store(EntityLivingBase living){
         living.getEntityData().setTag("mysticis:mana", this);
+        new ManaUpdateEvent(this, living).post(MinecraftForge.EVENT_BUS);
     }
 
-    @Override
-    public String toString() {
+    public String format() {
         String s = "[";
         for(Type t : Type.values()){
             s+=t.name()+": "+get(t)+", ";

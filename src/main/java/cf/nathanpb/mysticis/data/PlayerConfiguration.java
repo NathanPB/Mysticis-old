@@ -7,6 +7,7 @@ import java.lang.reflect.Field;
 import java.util.HashMap;
 import java.util.Optional;
 
+//todo arrumar outra forma de implementar esse sistema (client side)
 public class PlayerConfiguration extends NBTTagCompound{
 
     public PlayerConfiguration(NBTTagCompound compound){
