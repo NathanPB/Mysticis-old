@@ -1,9 +1,11 @@
 package cf.nathanpb.mysticis.data;
 
 import cf.nathanpb.mysticis.Mysticis;
+import cf.nathanpb.mysticis.proxy.CommonProxy;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.nbt.*;
 import net.minecraftforge.common.config.Configuration;
+import net.minecraftforge.common.config.Property;
 
 import java.io.File;
 import java.lang.reflect.Field;
@@ -14,28 +16,25 @@ import java.util.TimerTask;
 
 public class MysticisConfig extends Configuration{
 
+
+    public static Property
+        SHOW_MANA_HUD,
+        MANA_HUD_X,
+        MANA_HUD_Y;
+
     public MysticisConfig(){
         super(new File("configs/"+ Mysticis.ID+".cfg"));
         load();
         addCustomCategoryComment("mana", "Things about Mana system");
+
+        SHOW_MANA_HUD = get("mana", "show_hud", true, "Set to true if you want to hide mana hud (can be changed ingame)");
+        MANA_HUD_X = get("mana", "hud_x", 20, "X axis to mana hud");
+        MANA_HUD_Y = get("mana", "hud_y", 20, "Y axis to mana hud");
         save();
-        new Timer("Mysticis Config Saver").schedule(new TimerTask() {
-            @Override
-            public void run() {
-                save();
-            }
-        }, 0, 5000);
     }
 
-    public boolean showManaHud(){
-        return get("mana", "show_hud", true).getBoolean();
-    }
-
-    public int getManaHudX(){
-        return get("mana", "hud_x", 30).getInt();
-    }
-
-    public int getManaHudY(){
-        return get("mana", "hud_y", 30).getInt();
+    public static void _save(){
+        if(CommonProxy.configuration.hasChanged())
+            CommonProxy.configuration.save();
     }
 }
