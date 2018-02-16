@@ -9,7 +9,7 @@ guiScale:0
 particles:0
 bobView:true
 anaglyph3d:false
-maxFps:120
+maxFps:60
 fboEnable:true
 difficulty:2
 fancyGraphics:true
@@ -29,7 +29,7 @@ fullscreen:false
 enableVsync:true
 useVbo:true
 hideServerAddress:false
-advancedItemTooltips:false
+advancedItemTooltips:true
 pauseOnLostFocus:true
 touchscreen:false
 overrideWidth:0
