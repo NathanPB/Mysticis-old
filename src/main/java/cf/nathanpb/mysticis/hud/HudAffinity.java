@@ -1,29 +1,29 @@
 package cf.nathanpb.mysticis.hud;
 
+import cf.nathanpb.mysticis.data.AffinityData;
 import cf.nathanpb.mysticis.data.ManaData;
 import cf.nathanpb.mysticis.data.MysticisConfig;
 import net.minecraft.client.Minecraft;
 import net.minecraft.nbt.NBTTagCompound;
 
-public class HudMana extends Hud{
-    private ManaData mana = new ManaData(new NBTTagCompound());
+public class HudAffinity extends Hud {
+    private AffinityData affinity = new AffinityData(new NBTTagCompound());
 
     private String
-            air = mana.get(ManaData.Type.AIR)+"",
-            fire = mana.get(ManaData.Type.FIRE)+"",
-            water = mana.get(ManaData.Type.WATER)+"",
-            ice = mana.get(ManaData.Type.ICE)+"",
-            nature = mana.get(ManaData.Type.NATURE)+"",
-            magic = mana.get(ManaData.Type.MAGIC)+"",
-            dark = mana.get(ManaData.Type.DARK)+"";
+            air = affinity.get(ManaData.Type.AIR)+"",
+            fire = affinity.get(ManaData.Type.FIRE)+"",
+            water = affinity.get(ManaData.Type.WATER)+"",
+            ice = affinity.get(ManaData.Type.ICE)+"",
+            nature = affinity.get(ManaData.Type.NATURE)+"",
+            magic = affinity.get(ManaData.Type.MAGIC)+"",
+            dark = affinity.get(ManaData.Type.DARK)+"";
 
-
-
-
-    public HudMana(){
-        setPosition(MysticisConfig.MANA_HUD_X.getInt(), MysticisConfig.MANA_HUD_Y.getInt());
+    public HudAffinity(){
+        setPosition(MysticisConfig.AFFINITY_HUD_X.getInt(), MysticisConfig.AFFINITY_HUD_Y.getInt());
         setSize(30, 60);
     }
+
+
 
     public void render(){
         super.render();
@@ -40,15 +40,15 @@ public class HudMana extends Hud{
     }
 
     /*
-        To save cpu resources
-     */
-    public void update(ManaData mana){
-        air = mana.get(ManaData.Type.AIR)+"";
-        fire = mana.get(ManaData.Type.FIRE)+"";
-        water = mana.get(ManaData.Type.WATER)+"";
-        ice = mana.get(ManaData.Type.ICE)+"";
-        nature = mana.get(ManaData.Type.NATURE)+"";
-        magic = mana.get(ManaData.Type.MAGIC)+"";
-        dark = mana.get(ManaData.Type.DARK)+"";
+       To save cpu resources
+    */
+    public void update(AffinityData affinity){
+        air = affinity.get(ManaData.Type.AIR)+"";
+        fire = affinity.get(ManaData.Type.FIRE)+"";
+        water = affinity.get(ManaData.Type.WATER)+"";
+        ice = affinity.get(ManaData.Type.ICE)+"";
+        nature = affinity.get(ManaData.Type.NATURE)+"";
+        magic = affinity.get(ManaData.Type.MAGIC)+"";
+        dark = affinity.get(ManaData.Type.DARK)+"";
     }
 }

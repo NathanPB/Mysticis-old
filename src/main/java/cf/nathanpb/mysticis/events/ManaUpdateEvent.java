@@ -3,7 +3,6 @@ package cf.nathanpb.mysticis.events;
 import cf.nathanpb.mysticis.data.ManaData;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraftforge.event.entity.EntityEvent;
-import net.minecraftforge.fml.common.event.FMLEvent;
 import net.minecraftforge.fml.common.eventhandler.Event;
 
 public class ManaUpdateEvent extends EntityEvent implements IEvent{

@@ -72,8 +72,10 @@ public class HudConfigEditor extends Hud{
 
         MysticisConfig.MANA_HUD_X.set(Hud.MANA.getX());
         MysticisConfig.MANA_HUD_Y.set(Hud.MANA.getY());
+
+        MysticisConfig.AFFINITY_HUD_X.set(Hud.AFFINITY.getX());
+        MysticisConfig.AFFINITY_HUD_Y.set(Hud.AFFINITY.getY());
         MysticisConfig._save();
-        //todo salvar alterações
     }
 
 

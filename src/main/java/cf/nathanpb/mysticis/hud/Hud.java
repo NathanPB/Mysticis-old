@@ -19,9 +19,11 @@ public class Hud extends GuiScreen{
         EXISTING HUDS
      */
     public static HudMana MANA = new HudMana();
+    public static HudAffinity AFFINITY = new HudAffinity();
 
     private static Hud[] huds = new Hud[]{
-            MANA
+            MANA,
+            AFFINITY
     };
 
 

@@ -20,16 +20,25 @@ public class MysticisConfig extends Configuration{
     public static Property
         SHOW_MANA_HUD,
         MANA_HUD_X,
-        MANA_HUD_Y;
+        MANA_HUD_Y,
+
+        SHOW_AFFINITY_HUD,
+        AFFINITY_HUD_X,
+        AFFINITY_HUD_Y;
 
     public MysticisConfig(){
         super(new File("configs/"+ Mysticis.ID+".cfg"));
         load();
-        addCustomCategoryComment("mana", "Things about Mana system");
+        addCustomCategoryComment("mana", "Things about Mana system and its HUD");
+        addCustomCategoryComment("affinity", "Things about Affinity system and its HUD");
 
-        SHOW_MANA_HUD = get("mana", "show_hud", true, "Set to true if you want to hide mana hud (can be changed ingame)");
-        MANA_HUD_X = get("mana", "hud_x", 20, "X axis to mana hud");
-        MANA_HUD_Y = get("mana", "hud_y", 20, "Y axis to mana hud");
+        SHOW_MANA_HUD = get("mana", "show_hud", true, "Set to false to hide Mana HUD");
+        MANA_HUD_X = get("mana", "hud_x", 20, "X axis to Mana HUD");
+        MANA_HUD_Y = get("mana", "hud_y", 20, "Y axis to Mana HUD");
+
+        SHOW_AFFINITY_HUD = get("affinity", "show_hud", true, "Set to false to hide Affinity HUD");
+        AFFINITY_HUD_X = get("affinity", "hud_x", 20, "X axis to Affinity HUD");
+        AFFINITY_HUD_Y = get("affinity", "hud_y", 90, "Y axis to Affinity HUD");
         save();
     }
 

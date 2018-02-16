@@ -69,4 +69,14 @@ public class ManaData extends NBTTagCompound{
     public enum Type{
         AIR, FIRE, WATER, ICE, NATURE, MAGIC, DARK;
     }
+
+    public static int
+            colorAir = Integer.parseInt("FFFF55", 16),
+            colorFire = Integer.parseInt("AA0000", 16),
+            colorWater = Integer.parseInt("0000AA", 16),
+            colorIce = Integer.parseInt("00AAAA", 16),
+            colorNature = Integer.parseInt("00AA00", 16),
+            colorMagic = Integer.parseInt("AA00AA", 16),
+            colorDark = Integer.parseInt("460860", 16);
+
 }
