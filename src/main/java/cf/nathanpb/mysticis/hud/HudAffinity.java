@@ -29,17 +29,18 @@ public class HudAffinity extends Hud {
         super.render();
         if(MysticisConfig.SHOW_AFFINITY_HUD.getBoolean()) {
             int height = getY();
-            drawCenteredString(Minecraft.getMinecraft().fontRenderer, air, getX(), height, ManaData.colorAir);
-            drawCenteredString(Minecraft.getMinecraft().fontRenderer, fire, getX(), height+=10, ManaData.colorFire);
-            drawCenteredString(Minecraft.getMinecraft().fontRenderer, water, getX(), height+=10, ManaData.colorWater);
-            drawCenteredString(Minecraft.getMinecraft().fontRenderer, ice, getX(), height+=10, ManaData.colorIce);
-            drawCenteredString(Minecraft.getMinecraft().fontRenderer, nature, getX(), height+=10, ManaData.colorNature);
-            drawCenteredString(Minecraft.getMinecraft().fontRenderer, magic, getX(), height+=10, ManaData.colorMagic);
-            drawCenteredString(Minecraft.getMinecraft().fontRenderer, dark, getX(), height+10, ManaData.colorDark);
+            drawString(Minecraft.getMinecraft().fontRenderer, air, getX(), height, ManaData.colorAir);
+            drawString(Minecraft.getMinecraft().fontRenderer, fire, getX(), height+=10, ManaData.colorFire);
+            drawString(Minecraft.getMinecraft().fontRenderer, water, getX(), height+=10, ManaData.colorWater);
+            drawString(Minecraft.getMinecraft().fontRenderer, ice, getX(), height+=10, ManaData.colorIce);
+            drawString(Minecraft.getMinecraft().fontRenderer, nature, getX(), height+=10, ManaData.colorNature);
+            drawString(Minecraft.getMinecraft().fontRenderer, magic, getX(), height+=10, ManaData.colorMagic);
+            drawString(Minecraft.getMinecraft().fontRenderer, dark, getX(), height+10, ManaData.colorDark);
         }
     }
 
     public void update(AffinityData affinity){
+        System.out.println("updated");
         air = affinity.AIR+"";
         fire = affinity.FIRE+"";
         water = affinity.WATER+"";

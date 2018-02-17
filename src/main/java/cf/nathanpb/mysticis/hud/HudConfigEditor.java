@@ -1,20 +1,10 @@
 package cf.nathanpb.mysticis.hud;
 
-import cf.nathanpb.mysticis.Mysticis;
 import cf.nathanpb.mysticis.data.MysticisConfig;
-import cf.nathanpb.mysticis.proxy.CommonProxy;
 import net.minecraft.client.Minecraft;
-import net.minecraft.client.gui.GuiScreen;
 import net.minecraft.client.gui.ScaledResolution;
 import net.minecraft.client.resources.I18n;
-import net.minecraft.util.MouseHelper;
-import net.minecraftforge.client.event.RenderGameOverlayEvent;
-import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.fml.common.Mod;
-import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
-import org.lwjgl.input.Mouse;
-
-import java.io.IOException;
 
 
 @Mod.EventBusSubscriber
