@@ -21,6 +21,18 @@ public class AffinityData extends ManaData{
     }
 
     @Override
+    protected void initIfBlank() {
+        super.initIfBlank();
+        AIR = 50;
+        FIRE = 50;
+        WATER = 50;
+        ICE = 50;
+        NATURE = 50;
+        MAGIC = 50;
+        DARK = 50;
+    }
+
+    @Override
     public void store(EntityLivingBase living) {
         living.getEntityData().setTag("mysticis:affinity", this.toTag());
         new AffinityUpdateEvent(this, living).post(MinecraftForge.EVENT_BUS);

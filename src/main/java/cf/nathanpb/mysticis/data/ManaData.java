@@ -24,7 +24,11 @@ public class ManaData{
 
     public ManaData(){}
     public ManaData(NBTTagCompound compound){
-        init(compound);
+        if(!compound.getKeySet().isEmpty()){
+            init(compound);
+        } else {
+            initIfBlank();
+        }
     }
 
     protected void init(NBTTagCompound c){
@@ -35,6 +39,10 @@ public class ManaData{
         NATURE = c.getInteger("NATURE");
         MAGIC = c.getInteger("MAGIC");
         DARK = c.getInteger("DARK");
+    }
+
+    protected void initIfBlank(){
+
     }
 
     public ManaData sum(ManaData data){
@@ -65,7 +73,7 @@ public class ManaData{
     }
 
     public static ManaData from(EntityLivingBase living){
-        return new ManaData(Optional.of(living.getEntityData().getCompoundTag("mysticis:mana")).orElse(new NBTTagCompound()));
+        return new ManaData(living.getEntityData().getCompoundTag("mysticis:mana"));
     }
 
     public void store(EntityLivingBase living){
