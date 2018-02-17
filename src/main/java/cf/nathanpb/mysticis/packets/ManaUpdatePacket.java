@@ -20,7 +20,7 @@ public class ManaUpdatePacket implements IMessage{
 
     @Override
     public void toBytes(ByteBuf buf) {
-        ByteBufUtils.writeTag(buf, mana);
+        ByteBufUtils.writeTag(buf, mana.toTag());
     }
 
     public ManaData getMana() {

@@ -10,13 +10,13 @@ public class HudAffinity extends Hud {
     private AffinityData affinity = new AffinityData(new NBTTagCompound());
 
     private String
-            air = affinity.get(ManaData.Type.AIR)+"",
-            fire = affinity.get(ManaData.Type.FIRE)+"",
-            water = affinity.get(ManaData.Type.WATER)+"",
-            ice = affinity.get(ManaData.Type.ICE)+"",
-            nature = affinity.get(ManaData.Type.NATURE)+"",
-            magic = affinity.get(ManaData.Type.MAGIC)+"",
-            dark = affinity.get(ManaData.Type.DARK)+"";
+            air = affinity.AIR+"",
+            fire = affinity.FIRE+"",
+            water = affinity.WATER+"",
+            ice = affinity.ICE+"",
+            nature = affinity.NATURE+"",
+            magic = affinity.MAGIC+"",
+            dark = affinity.DARK+"";
 
     public HudAffinity(){
         setPosition(MysticisConfig.AFFINITY_HUD_X.getInt(), MysticisConfig.AFFINITY_HUD_Y.getInt());
@@ -27,7 +27,7 @@ public class HudAffinity extends Hud {
 
     public void render(){
         super.render();
-        if(MysticisConfig.SHOW_MANA_HUD.getBoolean()) {
+        if(MysticisConfig.SHOW_AFFINITY_HUD.getBoolean()) {
             int height = getY();
             drawCenteredString(Minecraft.getMinecraft().fontRenderer, air, getX(), height, ManaData.colorAir);
             drawCenteredString(Minecraft.getMinecraft().fontRenderer, fire, getX(), height+=10, ManaData.colorFire);
@@ -39,16 +39,13 @@ public class HudAffinity extends Hud {
         }
     }
 
-    /*
-       To save cpu resources
-    */
     public void update(AffinityData affinity){
-        air = affinity.get(ManaData.Type.AIR)+"";
-        fire = affinity.get(ManaData.Type.FIRE)+"";
-        water = affinity.get(ManaData.Type.WATER)+"";
-        ice = affinity.get(ManaData.Type.ICE)+"";
-        nature = affinity.get(ManaData.Type.NATURE)+"";
-        magic = affinity.get(ManaData.Type.MAGIC)+"";
-        dark = affinity.get(ManaData.Type.DARK)+"";
+        air = affinity.AIR+"";
+        fire = affinity.FIRE+"";
+        water = affinity.WATER+"";
+        ice = affinity.ICE+"";
+        nature = affinity.NATURE+"";
+        magic = affinity.MAGIC+"";
+        dark = affinity.DARK+"";
     }
 }

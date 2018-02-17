@@ -6,35 +6,45 @@ import net.minecraft.nbt.NBTTagCompound;
 import net.minecraftforge.common.MinecraftForge;
 
 import java.util.Optional;
+import java.util.Random;
 import java.util.stream.Stream;
 
-public class ManaData extends NBTTagCompound{
+public class ManaData{
 
+    public int
+        AIR = 0,
+        FIRE = 0,
+        WATER = 0,
+        ICE = 0,
+        NATURE = 0,
+        MAGIC = 0,
+        DARK = 0;
+
+
+
+    public ManaData(){}
     public ManaData(NBTTagCompound compound){
-        Stream.of(Type.values())
-                .filter(t -> compound.hasKey(t.name()))
-                .forEach(t -> set(compound.getInteger(t.name()), t));
+        init(compound);
     }
 
-    public int get(Type... types){
-        if(types.length == 0) types = Type.values();
-        int value = 0;
-        for(Type t : types){
-            if(hasKey(t.name())) {
-                value += getInteger(t.name());
-            }
-        }
-        return value;
-    }
-
-    public ManaData set(int value, Type... types){
-        if(types.length == 0) types = Type.values();
-        Stream.of(types).forEach(t -> setInteger(t.name(), value));
-        return this;
+    protected void init(NBTTagCompound c){
+        AIR = c.getInteger("AIR");
+        FIRE = c.getInteger("FIRE");
+        WATER = c.getInteger("WATER");
+        ICE = c.getInteger("ICE");
+        NATURE = c.getInteger("NATURE");
+        MAGIC = c.getInteger("MAGIC");
+        DARK = c.getInteger("DARK");
     }
 
     public ManaData sum(ManaData data){
-        Stream.of(Type.values()).forEach(t -> set(data.get(t)+get(t), t));
+        AIR += data.AIR;
+        FIRE += data.FIRE;
+        WATER += data.WATER;
+        ICE += data.ICE;
+        NATURE += data.NATURE;
+        MAGIC += data.MAGIC;
+        DARK += data.DARK;
         return this;
     }
 
@@ -44,7 +54,13 @@ public class ManaData extends NBTTagCompound{
     }
 
     public ManaData reverse(){
-        Stream.of(Type.values()).forEach(t -> set( -get(t), t));
+        AIR = -AIR;
+        FIRE = -FIRE;
+        WATER = -WATER;
+        ICE = -ICE;
+        NATURE = -NATURE;
+        MAGIC = -MAGIC;
+        DARK = -DARK;
         return this;
     }
 
@@ -53,21 +69,27 @@ public class ManaData extends NBTTagCompound{
     }
 
     public void store(EntityLivingBase living){
-        living.getEntityData().setTag("mysticis:mana", this);
+        if(AIR < 0) AIR = 0;
+        if(FIRE < 0) FIRE = 0;
+        if(WATER < 0) WATER = 0;
+        if(ICE < 0) ICE = 0;
+        if(NATURE < 0) NATURE = 0;
+        if(MAGIC < 0) MAGIC = 0;
+        if(DARK < 0) DARK = 0;
+        living.getEntityData().setTag("mysticis:mana", this.toTag());
         new ManaUpdateEvent(this, living).post(MinecraftForge.EVENT_BUS);
     }
 
-    public String format() {
-        String s = "[";
-        for(Type t : Type.values()){
-            s+=t.name()+": "+get(t)+", ";
-        }
-        s = s.substring(0, s.length()-2);
-        return s+"]";
-    }
-
-    public enum Type{
-        AIR, FIRE, WATER, ICE, NATURE, MAGIC, DARK;
+    public NBTTagCompound toTag(){
+        NBTTagCompound nbt = new NBTTagCompound();
+        nbt.setInteger("AIR", AIR);
+        nbt.setInteger("FIRE", FIRE);
+        nbt.setInteger("WATER", WATER);
+        nbt.setInteger("ICE", ICE);
+        nbt.setInteger("NATURE", NATURE);
+        nbt.setInteger("MAGIC", MAGIC);
+        nbt.setInteger("DARK", DARK);
+        return nbt;
     }
 
     public static int

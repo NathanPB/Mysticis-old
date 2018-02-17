@@ -15,7 +15,7 @@ public class AffinityUpdatePacket implements IMessage{
 
     @Override
     public void toBytes(ByteBuf buf) {
-        ByteBufUtils.writeTag(buf, affinity);
+        ByteBufUtils.writeTag(buf, affinity.toTag());
     }
 
     @Override

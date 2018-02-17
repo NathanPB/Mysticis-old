@@ -9,13 +9,13 @@ public class HudMana extends Hud{
     private ManaData mana = new ManaData(new NBTTagCompound());
 
     private String
-            air = mana.get(ManaData.Type.AIR)+"",
-            fire = mana.get(ManaData.Type.FIRE)+"",
-            water = mana.get(ManaData.Type.WATER)+"",
-            ice = mana.get(ManaData.Type.ICE)+"",
-            nature = mana.get(ManaData.Type.NATURE)+"",
-            magic = mana.get(ManaData.Type.MAGIC)+"",
-            dark = mana.get(ManaData.Type.DARK)+"";
+            air = mana.AIR+"",
+            fire = mana.FIRE+"",
+            water = mana.WATER+"",
+            ice = mana.ICE+"",
+            nature = mana.NATURE+"",
+            magic = mana.MAGIC+"",
+            dark = mana.DARK+"";
 
 
 
@@ -39,16 +39,13 @@ public class HudMana extends Hud{
         }
     }
 
-    /*
-        To save cpu resources
-     */
     public void update(ManaData mana){
-        air = mana.get(ManaData.Type.AIR)+"";
-        fire = mana.get(ManaData.Type.FIRE)+"";
-        water = mana.get(ManaData.Type.WATER)+"";
-        ice = mana.get(ManaData.Type.ICE)+"";
-        nature = mana.get(ManaData.Type.NATURE)+"";
-        magic = mana.get(ManaData.Type.MAGIC)+"";
-        dark = mana.get(ManaData.Type.DARK)+"";
+        air = mana.AIR+"";
+        fire = mana.FIRE+"";
+        water = mana.WATER+"";
+        ice = mana.ICE+"";
+        nature = mana.NATURE+"";
+        magic = mana.MAGIC+"";
+        dark = mana.DARK+"";
     }
 }

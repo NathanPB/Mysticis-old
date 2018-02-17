@@ -9,6 +9,7 @@ import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 public class ServerProxy extends CommonProxy{
     @Override
     public void onPreInit(FMLPreInitializationEvent e) {
+        new MysticisDataListener();
         MinecraftForge.EVENT_BUS.register(MysticisDataListener.class);
     }
 
