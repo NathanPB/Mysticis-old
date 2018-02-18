@@ -15,7 +15,7 @@ import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 
-public class ClientProxy extends CommonProxy{
+public class ClientProxy implements IProxy {
 
     @Override
     public void registerItemRender(Item item, int meta, String id) {
@@ -24,19 +24,17 @@ public class ClientProxy extends CommonProxy{
 
     @Override
     public void onPreInit(FMLPreInitializationEvent e) {
-        super.onPreInit(e);
         new RenderUtils();
         Hud.MANA.update(new ManaData(new NBTTagCompound()));
     }
 
     @Override
     public void onInit(FMLInitializationEvent e) {
-        super.onInit(e);
+
     }
 
     @Override
     public void onPostInit(FMLPostInitializationEvent e) {
-        super.onPostInit(e);
         MinecraftForge.EVENT_BUS.register(KeyBinding.class);
         MinecraftForge.EVENT_BUS.register(AffinityData.class);
     }

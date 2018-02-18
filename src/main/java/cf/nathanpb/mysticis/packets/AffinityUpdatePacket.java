@@ -1,9 +1,12 @@
 package cf.nathanpb.mysticis.packets;
 
 import cf.nathanpb.mysticis.data.AffinityData;
+import cf.nathanpb.mysticis.hud.Hud;
 import io.netty.buffer.ByteBuf;
 import net.minecraftforge.fml.common.network.ByteBufUtils;
 import net.minecraftforge.fml.common.network.simpleimpl.IMessage;
+import net.minecraftforge.fml.common.network.simpleimpl.IMessageHandler;
+import net.minecraftforge.fml.common.network.simpleimpl.MessageContext;
 
 public class AffinityUpdatePacket implements IMessage{
     private AffinityData affinity;
@@ -25,5 +28,13 @@ public class AffinityUpdatePacket implements IMessage{
 
     public AffinityData getAffinity() {
         return affinity;
+    }
+
+    public static class Handler implements IMessageHandler<AffinityUpdatePacket, IMessage>{
+        @Override
+        public IMessage onMessage(AffinityUpdatePacket message, MessageContext ctx) {
+            Hud.AFFINITY.update(message.getAffinity());
+            return null;
+        }
     }
 }

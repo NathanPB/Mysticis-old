@@ -26,9 +26,7 @@ public class ItemMysticis extends ItemBase{
             toSum.WATER = -1;
 
             ManaData m = AffinityData.from(player).sum(toSum);
-            System.out.println("a: "+m);
             m.store(player);
-            System.out.println("b: "+AffinityData.from(player));
         }
         return super.onItemUse(player, worldIn, pos, hand, facing, hitX, hitY, hitZ);
     }

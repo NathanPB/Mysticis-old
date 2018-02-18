@@ -1,7 +1,10 @@
 package cf.nathanpb.mysticis;
 
+import cf.nathanpb.mysticis.data.MysticisConfig;
 import cf.nathanpb.mysticis.item.ModItems;
-import cf.nathanpb.mysticis.proxy.CommonProxy;
+import cf.nathanpb.mysticis.packets.AffinityUpdatePacket;
+import cf.nathanpb.mysticis.packets.ManaUpdatePacket;
+import cf.nathanpb.mysticis.proxy.IProxy;
 import net.minecraft.item.Item;
 import net.minecraftforge.client.event.ModelRegistryEvent;
 import net.minecraftforge.event.RegistryEvent;
@@ -13,6 +16,7 @@ import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.network.NetworkRegistry;
 import net.minecraftforge.fml.common.network.simpleimpl.SimpleNetworkWrapper;
+import net.minecraftforge.fml.relauncher.Side;
 
 
 @Mod(modid = Mysticis.ID,  name = Mysticis.NAME, version = Mysticis.VERSION)
@@ -21,9 +25,14 @@ public class Mysticis {
     public static final String NAME = "Mysticis";
     public static final String VERSION = "1.0.0";
     public static final SimpleNetworkWrapper NETWORK_WRAPPER = NetworkRegistry.INSTANCE.newSimpleChannel(Mysticis.ID);
+    public static final MysticisConfig configuration = new MysticisConfig();
 
-    @SidedProxy(modId = Mysticis.ID, clientSide = "cf.nathanpb.mysticis.proxy.ClientProxy", serverSide = "cf.nathanpb.mysticis.proxy.ServerProxy")
-    public static CommonProxy proxy;
+    @SidedProxy(
+            modId = Mysticis.ID,
+            clientSide = "cf.nathanpb.mysticis.proxy.ClientProxy",
+            serverSide = "cf.nathanpb.mysticis.proxy.ServerProxy"
+    )
+    public static IProxy proxy;
 
 
     @Mod.EventHandler
@@ -34,6 +43,9 @@ public class Mysticis {
     @Mod.EventHandler
     public static void onInit(FMLInitializationEvent e){
         proxy.onInit(e);
+        int id = 0;
+        NETWORK_WRAPPER.registerMessage(ManaUpdatePacket.Handler.class, ManaUpdatePacket.class, id++, Side.CLIENT);
+        NETWORK_WRAPPER.registerMessage(AffinityUpdatePacket.Handler.class, AffinityUpdatePacket.class, id++, Side.CLIENT);
     }
 
     @Mod.EventHandler

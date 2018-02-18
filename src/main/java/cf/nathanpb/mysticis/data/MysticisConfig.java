@@ -1,18 +1,10 @@
 package cf.nathanpb.mysticis.data;
 
 import cf.nathanpb.mysticis.Mysticis;
-import cf.nathanpb.mysticis.proxy.CommonProxy;
-import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.nbt.*;
 import net.minecraftforge.common.config.Configuration;
 import net.minecraftforge.common.config.Property;
 
 import java.io.File;
-import java.lang.reflect.Field;
-import java.util.HashMap;
-import java.util.Optional;
-import java.util.Timer;
-import java.util.TimerTask;
 
 public class MysticisConfig extends Configuration{
 
@@ -43,7 +35,7 @@ public class MysticisConfig extends Configuration{
     }
 
     public static void _save(){
-        if(CommonProxy.configuration.hasChanged())
-            CommonProxy.configuration.save();
+        if(Mysticis.configuration.hasChanged())
+            Mysticis.configuration.save();
     }
 }

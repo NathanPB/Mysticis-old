@@ -100,6 +100,11 @@ public class ManaData{
         return nbt;
     }
 
+    @Override
+    public String toString() {
+        return toTag().toString();
+    }
+
     public static int
             colorAir = Integer.parseInt("FFFF55", 16),
             colorFire = Integer.parseInt("AA0000", 16),

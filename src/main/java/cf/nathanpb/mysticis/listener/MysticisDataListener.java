@@ -11,7 +11,6 @@ import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
-//@SideOnly(Side.SERVER)
 @Mod.EventBusSubscriber
 public class MysticisDataListener {
 
@@ -24,7 +23,7 @@ public class MysticisDataListener {
     }
 
     @SubscribeEvent
-    public void onAffinityChange(AffinityUpdateEvent e){
+    public static void onAffinityChange(AffinityUpdateEvent e){
         if(e.getEntity() instanceof EntityPlayerMP) {
             AffinityUpdatePacket p = new AffinityUpdatePacket(e.getAffinity());
             Mysticis.NETWORK_WRAPPER.sendTo(p, (EntityPlayerMP) e.getEntity());

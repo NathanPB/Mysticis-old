@@ -34,6 +34,22 @@ public class AffinityData extends ManaData{
 
     @Override
     public void store(EntityLivingBase living) {
+        if(AIR < 0) AIR = 0;
+        if(FIRE < 0) FIRE = 0;
+        if(WATER < 0) WATER = 0;
+        if(ICE < 0) ICE = 0;
+        if(NATURE < 0) NATURE = 0;
+        if(MAGIC < 0) MAGIC = 0;
+        if(DARK < 0) DARK = 0;
+
+        if(AIR > 100) AIR = 100;
+        if(FIRE > 100) FIRE = 100;
+        if(WATER > 100) WATER = 100;
+        if(ICE > 100) ICE = 100;
+        if(NATURE > 100) NATURE = 100;
+        if(MAGIC > 100) MAGIC = 100;
+        if(DARK > 100) DARK = 100;
+
         living.getEntityData().setTag("mysticis:affinity", this.toTag());
         new AffinityUpdateEvent(this, living).post(MinecraftForge.EVENT_BUS);
     }
@@ -45,18 +61,82 @@ public class AffinityData extends ManaData{
     @SubscribeEvent
     public static void onPlayerTick(TickEvent.PlayerTickEvent e){
         AffinityData af = from(e.player);
-        ManaData mana = from(e.player);
+        ManaData mana = ManaData.from(e.player);
+        LevelData level = LevelData.from(e.player);
 
-        //decrease/increase mana according to affinity
-        //todo chance by level when its done
         ManaData md = new ManaData();
-            md.AIR = af.AIR - 50;
-            md.FIRE = af.FIRE - 50;
-            md.WATER = af.WATER - 50;
-            md.ICE = af.ICE - 50;
-            md.NATURE = af.NATURE - 50;
-            md.MAGIC = af.MAGIC - 50;
-            md.DARK = af.DARK - 50;
+        int random = new Random().nextInt(1000);
+
+        if(af.AIR < 50){
+            if(random <= -(af.AIR-50) * 10){
+                md.AIR--;
+            }
+        } else {
+            if(random <= ((float) level.level/50) * af.AIR+1){
+                md.AIR++;
+            }
+        }
+
+        if(af.FIRE < 50){
+            if(random <= -(af.FIRE-50) * 10){
+                md.FIRE--;
+            }
+        } else {
+            if(random <= ((float) level.level/50) * af.FIRE+1){
+                md.FIRE++;
+            }
+        }
+
+        if(af.WATER < 50){
+            if(random <= -(af.WATER-50) * 10){
+                md.WATER--;
+            }
+        } else {
+            if(random <= ((float) level.level/50) * af.WATER+1){
+                md.WATER++;
+            }
+        }
+
+        if(af.ICE < 50){
+            if(random <= -(af.ICE-50) * 10){
+                md.ICE--;
+            }
+        } else {
+            if(random <= ((float) level.level/50) * af.ICE+1){
+                md.ICE++;
+            }
+        }
+
+        if(af.NATURE < 50){
+            if(random <= -(af.NATURE-50) * 10){
+                md.NATURE--;
+            }
+        } else {
+            if(random <= ((float) level.level/50) * af.NATURE+1){
+                md.NATURE++;
+            }
+        }
+
+        if(af.MAGIC < 50){
+            if(random <= -(af.MAGIC-50) * 10){
+                md.MAGIC--;
+            }
+        } else {
+            if(random <= ((float) level.level/50) * af.MAGIC+1){
+                md.MAGIC++;
+            }
+        }
+
+        if(af.DARK < 50){
+            if(random <= -(af.DARK-50) * 10){
+                md.DARK--;
+            }
+        } else {
+            if(random <= ((float) level.level/50) * af.DARK+1){
+                md.DARK++;
+            }
+        }
+
         mana.sum(md);
         mana.store(e.player);
     }
