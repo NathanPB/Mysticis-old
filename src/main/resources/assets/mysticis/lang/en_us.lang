@@ -1,3 +1,5 @@
 item.mysticis.name=Mysticis
 
 gui.hudmodify.centered_text=Drag the elements to move them
+
+key.category.mysticis.hudmodify =Modify UI
