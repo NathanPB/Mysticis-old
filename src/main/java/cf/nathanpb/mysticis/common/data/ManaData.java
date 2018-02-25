@@ -41,6 +41,7 @@ public class ManaData{
         DARK = c.getInteger("DARK");
     }
 
+
     protected void initIfBlank(){
 
     }
@@ -70,6 +71,10 @@ public class ManaData{
         MAGIC = -MAGIC;
         DARK = -DARK;
         return this;
+    }
+
+    public boolean hasNegatives(){
+        return AIR < 0 || FIRE < 0 || WATER < 0 || ICE < 0 || NATURE < 0 || MAGIC < 0 || DARK < 0;
     }
 
     public static ManaData from(EntityLivingBase living){

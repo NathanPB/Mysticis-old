@@ -13,6 +13,7 @@ public class ModItems {
 
     public static final CreativeTab CREATIVE_TAB = new CreativeTab();
     public static final ItemBase MYSTICIS = new ItemMysticis().setCreativeTab(CreativeTabs.MISC);
+    public static final ItemBase SPELL = new ItemSpell();
 
     public static void register(IForgeRegistry<Item> registry){
         List<ItemBase> items = getItems();
